@@ -1,0 +1,43 @@
+
+# Configuration for AI-Powered Stock Market Prediction Tool
+
+system:
+  version: "1.0.0"
+  log_level: "INFO"
+  max_threads: 4
+  use_gpu: true
+  data_storage_path: "ml/data/"
+  cache_predictions: true
+  auto_cleanup: false
+
+data:
+  historical_range: "max"  # "1y", "2y", "5y", "10y", "max"
+  data_sources: ["yahoo"]
+  indicators_set: "standard"  # "basic", "standard", "advanced", "comprehensive"
+  update_frequency: "daily"  # "daily", "weekly", "monthly", "manual"
+  update_time: "01:00"
+
+model:
+  model_type: "hybrid"  # "lstm", "cnn_lstm", "bidirectional", "attention", "hybrid"
+  model_complexity: "medium"  # "simple", "medium", "complex"
+  prediction_horizon: 5  # days
+  confidence_threshold: 0.7
+  sequence_length: 20
+  batch_size: 32
+  epochs: 100
+  early_stopping_patience: 15
+  test_size: 0.2
+
+stocks:
+  process_sp500: true
+  process_watchlist: false
+  process_custom: false
+  custom_tickers: []
+
+database:
+  type: "sqlite"  # "sqlite", "mysql"
+  host: ""
+  user: ""
+  password: ""
+  database: ""
+  auto_update_actual_values: true

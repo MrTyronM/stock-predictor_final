@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stock Market Prediction Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-chart-line"></i> AI Stock Predictor</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-page="predictions">Predictions</a></li>
+                    <li><a href="#" data-page="analysis">Stock Analysis</a></li>
+                    <li><a href="#" data-page="settings">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Dashboard Page -->
+            <section id="dashboard" class="page active">
+                <div class="dashboard-header">
+                    <h2>Market Overview</h2>
+                    <div class="date-control">
+                        <span class="current-date">April 22, 2025</span>
+                        <button class="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-arrow-up"></i></div>
+                        <div class="stat-info">
+                            <h3>Buy Signals</h3>
+                            <p class="stat-value">28</p>
+                            <p class="stat-change positive">+5 from yesterday</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-arrow-down"></i></div>
+                        <div class="stat-info">
+                            <h3>Sell Signals</h3>
+                            <p class="stat-value">15</p>
+                            <p class="stat-change negative">+3 from yesterday</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="stat-info">
+                            <h3>Model Accuracy</h3>
+                            <p class="stat-value">72.5%</p>
+                            <p class="stat-change positive">+1.2% this week</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>High Confidence</h3>
+                            <p class="stat-value">12</p>
+                            <p class="stat-change neutral">No change</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-charts">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Top Buy Signals</h3>
+                            <div class="chart-controls">
+                                <label for="buy-signals-timeframe" class="visually-hidden">Select timeframe for buy signals</label>
+                                <select id="buy-signals-timeframe">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="buy-signals-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Top Sell Signals</h3>
+                            <div class="chart-controls">
+                                <select id="sell-signals-timeframe">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="sell-signals-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-predictions">
+                    <div class="section-header">
+                        <h3>Recent Predictions</h3>
+                        <a href="#" class="view-all" data-page="predictions">View All</a>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Date</th>
+                                    <th>Signal</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>AAPL</strong></td>
+                                    <td>Apr 22, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 85%">85%</div></td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MSFT</strong></td>
+                                    <td>Apr 22, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 78%">78%</div></td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TSLA</strong></td>
+                                    <td>Apr 21, 2025</td>
+                                    <td><span class="signal sell">Sell</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 92%">92%</div></td>
+                                    <td><span class="status correct">Correct</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AMZN</strong></td>
+                                    <td>Apr 21, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 65%">65%</div></td>
+                                    <td><span class="status incorrect">Incorrect</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>GOOGL</strong></td>
+                                    <td>Apr 20, 2025</td>
+                                    <td><span class="signal hold">Hold</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 55%">55%</div></td>
+                                    <td><span class="status correct">Correct</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Predictions Page -->
+            <section id="predictions" class="page">
+                <div class="page-header">
+                    <h2>Stock Predictions</h2>
+                    <div class="filter-controls">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search ticker..." id="ticker-search">
+                            <buttonbutton type="button" title="Search"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="filter-options">
+                            <label for="signal-filter" class="visually-hidden">Filter by signal type</label>
+                            <select id="signal-filter">
+                                <option value="all">All Signals</option>
+                                <option value="buy">Buy</option>
+                                <option value="sell">Sell</option>
+                                <option value="hold">Hold</option>
+                            </label>
+                            <select id="confidence-filter">
+                                <option value="all">Any Confidence</option>
+                                <option value="high">High (>80%)</option>
+                                <option value="medium">Medium (50-80%)</option>
+                                <option value="low">Low (<50%)</option>
+                            </select>
+                            <label for="date-filter" class="visually-hidden">Filter by date</label>
+                            <select id="date-filter">
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prediction-list">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Company</th>
+                                    <th>Prediction Date</th>
+                                    <th>Signal</th>
+                                    <th>Confidence</th>
+                                    <th>Current Price</th>
+                                    <th>Target Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>AAPL</strong></td>
+                                    <td>Apple Inc.</td>
+                                    <td>Apr 22, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 85%">85%</div></td>
+                                    <td>$192.45</td>
+                                    <td>$205.80</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MSFT</strong></td>
+                                    <td>Microsoft Corp.</td>
+                                    <td>Apr 22, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 78%">78%</div></td>
+                                    <td>$425.63</td>
+                                    <td>$450.20</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TSLA</strong></td>
+                                    <td>Tesla Inc.</td>
+                                    <td>Apr 21, 2025</td>
+                                    <td><span class="signal sell">Sell</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 92%">92%</div></td>
+                                    <td>$175.30</td>
+                                    <td>$160.50</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AMZN</strong></td>
+                                    <td>Amazon.com Inc.</td>
+                                    <td>Apr 21, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 65%">65%</div></td>
+                                    <td>$180.25</td>
+                                    <td>$190.75</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>GOOGL</strong></td>
+                                    <td>Alphabet Inc.</td>
+                                    <td>Apr 20, 2025</td>
+                                    <td><span class="signal hold">Hold</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 55%">55%</div></td>
+                                    <td>$169.87</td>
+                                    <td>$172.30</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>META</strong></td>
+                                    <td>Meta Platforms Inc.</td>
+                                    <td>Apr 20, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 70%">70%</div></td>
+                                    <td>$450.75</td>
+                                    <td>$478.20</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>NVDA</strong></td>
+                                    <td>NVIDIA Corp.</td>
+                                    <td>Apr 19, 2025</td>
+                                    <td><span class="signal buy">Buy</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 88%">88%</div></td>
+                                    <td>$890.42</td>
+                                    <td>$950.35</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AMD</strong></td>
+                                    <td>Advanced Micro Devices</td>
+                                    <td>Apr 19, 2025</td>
+                                    <td><span class="signal sell">Sell</span></td>
+                                    <td><div class="confidence-bar" style="--confidence: 75%">75%</div></td>
+                                    <td>$172.50</td>
+                                    <td>$160.10</td>
+                                    <td><button class="btn-view">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                        <span class="page-info">Page 1 of 8</span>
+                        <button class="btn-next">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stock Analysis Page -->
+            <section id="analysis" class="page">
+                <div class="page-header">
+                    <h2>Stock Analysis</h2>
+                    <div class="stock-selector">
+                        <div class="search-box">
+                            <input type="text" placeholder="Enter ticker..." id="analysis-ticker">
+                            <button id="analyze-btn">Analyze</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-details">
+                    <div class="stock-header">
+                        <div class="stock-title">
+                            <h3>AAPL - Apple Inc.</h3>
+                            <span class="current-price">$192.45 <span class="price-change positive">+2.35 (1.23%)</span></span>
+                        </div>
+                        <div class="stock-actions">
+                            <button class="btn-watch"><i class="far fa-star"></i> Watch</button>
+                            <button class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        </div>
+                    </div>
+
+                    <div class="stock-charts">
+                        <div class="chart-tabs">
+                            <button class="tab-btn active" data-tab="price">Price Chart</button>
+                            <button class="tab-btn" data-tab="indicators">Indicators</button>
+                            <button class="tab-btn" data-tab="predictions">Prediction History</button>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-period">
+                                <button class="period-btn active">1D</button>
+                                <button class="period-btn">1W</button>
+                                <button class="period-btn">1M</button>
+                                <button class="period-btn">3M</button>
+                                <button class="period-btn">1Y</button>
+                                <button class="period-btn">5Y</button>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="stock-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stock-data-grid">
+                        <div class="data-card">
+                            <h4>Latest Prediction</h4>
+                            <div class="prediction-details">
+                                <div class="prediction-signal buy">Buy</div>
+                                <div class="prediction-meta">
+                                    <p><strong>Confidence:</strong> 85%</p>
+                                    <p><strong>Date:</strong> Apr 22, 2025</p>
+                                    <p><strong>Target Price:</strong> $205.80</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-card">
+                            <h4>Model Performance</h4>
+                            <div class="model-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Accuracy</span>
+                                    <span class="metric-value">76.4%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Precision</span>
+                                    <span class="metric-value">72.8%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Recall</span>
+                                    <span class="metric-value">68.5%</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">F1 Score</span>
+                                    <span class="metric-value">70.6%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-card">
+                            <h4>Key Metrics</h4>
+                            <div class="stock-metrics">
+                                <div class="metric-row">
+                                    <span class="metric-label">Market Cap</span>
+                                    <span class="metric-value">$3.15T</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">P/E Ratio</span>
+                                    <span class="metric-value">32.4</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">52W High</span>
+                                    <span class="metric-value">$210.75</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">52W Low</span>
+                                    <span class="metric-value">$155.20</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">Dividend Yield</span>
+                                    <span class="metric-value">0.58%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="data-card">
+                            <h4>Technical Indicators</h4>
+                            <div class="stock-indicators">
+                                <div class="indicator-row">
+                                    <span class="indicator-label">RSI (14)</span>
+                                    <span class="indicator-value">58.2</span>
+                                    <span class="indicator-status neutral">Neutral</span>
+                                </div>
+                                <div class="indicator-row">
+                                    <span class="indicator-label">MACD</span>
+                                    <span class="indicator-value">2.45</span>
+                                    <span class="indicator-status bullish">Bullish</span>
+                                </div>
+                                <div class="indicator-row">
+                                    <span class="indicator-label">MA (50)</span>
+                                    <span class="indicator-value">$185.70</span>
+                                    <span class="indicator-status bullish">Bullish</span>
+                                </div>
+                                <div class="indicator-row">
+                                    <span class="indicator-label">MA (200)</span>
+                                    <span class="indicator-value">$178.25</span>
+                                    <span class="indicator-status bullish">Bullish</span>
+                                </div>
+                                <div class="indicator-row">
+                                    <span class="indicator-label">BB Width</span>
+                                    <span class="indicator-value">5.2%</span>
+                                    <span class="indicator-status neutral">Neutral</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prediction-history">
+                        <h3>Prediction History</h3>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Signal</th>
+                                        <th>Confidence</th>
+                                        <th>Price at Prediction</th>
+                                        <th>Target Price</th>
+                                        <th>Actual Outcome</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Apr 22, 2025</td>
+                                        <td><span class="signal buy">Buy</span></td>
+                                        <td>85%</td>
+                                        <td>$192.45</td>
+                                        <td>$205.80</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apr 15, 2025</td>
+                                        <td><span class="signal hold">Hold</span></td>
+                                        <td>60%</td>
+                                        <td>$188.75</td>
+                                        <td>$190.20</td>
+                                        <td><span class="status correct">Correct</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apr 08, 2025</td>
+                                        <td><span class="signal buy">Buy</span></td>
+                                        <td>72%</td>
+                                        <td>$182.30</td>
+                                        <td>$190.50</td>
+                                        <td><span class="status correct">Correct</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apr 01, 2025</td>
+                                        <td><span class="signal sell">Sell</span></td>
+                                        <td>65%</td>
+                                        <td>$190.10</td>
+                                        <td>$182.50</td>
+                                        <td><span class="status incorrect">Incorrect</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mar 25, 2025</td>
+                                        <td><span class="signal buy">Buy</span></td>
+                                        <td>78%</td>
+                                        <td>$185.20</td>
+                                        <td>$195.00</td>
+                                        <td><span class="status correct">Correct</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Page -->
+            <section id="settings" class="page">
+                <div class="page-header">
+                    <h2>Settings</h2>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Model Configuration</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label for="model-type">Model Type</label>
+                                <select id="model-type">
+                                    <option value="lstm">LSTM</option>
+                                    <option value="cnn_lstm">CNN-LSTM</option>
+                                    <option value="bidirectional">Bidirectional</option>
+                                    <option value="attention">Attention</option>
+                                    <option value="hybrid" selected>Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="model-complexity">Model Complexity</label>
+                                <select id="model-complexity">
+                                    <option value="simple">Simple</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="complex">Complex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="prediction-horizon">Prediction Horizon</label>
+                                <select id="prediction-horizon">
+                                    <option value="1">1 Day</option>
+                                    <option value="3">3 Days</option>
+                                    <option value="5" selected>5 Days</option>
+                                    <option value="10">10 Days</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="confidence-threshold">Confidence Threshold</label>
+                                <input type="range" id="confidence-threshold" min="50" max="95" value="70" step="5">
+                                <span class="range-value">70%</span>
+                            </div>
+                            <button type="submit" class="btn-save">Save Configuration</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Data Options</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label for="historical-range">Historical Data Range</label>
+                                <select id="historical-range">
+                                    <option value="1">1 Year</option>
+                                    <option value="2">2 Years</option>
+                                    <option value="5">5 Years</option>
+                                    <option value="10" selected>10 Years</option>
+                                    <option value="max">Maximum Available</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="indicators-set">Technical Indicators Set</label>
+                                <select id="indicators-set">
+                                    <option value="basic">Basic</option>
+                                    <option value="standard" selected>Standard</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="comprehensive">Comprehensive</option>
+                                </select>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label>Data Sources</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="use-yahoo" checked>
+                                    <label for="use-yahoo">Yahoo Finance</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="use-alpha" disabled>
+                                    <label for="use-alpha">Alpha Vantage (API Key Required)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="use-local" checked>
+                                    <label for="use-local">Local Database Cache</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-save">Save Data Options</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Training Schedule</h3>
+                        <form class="settings-form">
+                            <div class="form-group radio-group">
+                                <label>Model Update Frequency</label>
+                                <div class="radio-item">
+                                    <input type="radio" id="update-daily" name="update-frequency" checked>
+                                    <label for="update-daily">Daily</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="update-weekly" name="update-frequency">
+                                    <label for="update-weekly">Weekly</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="update-monthly" name="update-frequency">
+                                    <label for="update-monthly">Monthly</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="update-manual" name="update-frequency">
+                                    <label for="update-manual">Manual Only</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="training-time">Training Time</label>
+                                <input type="time" id="training-time" value="01:00">
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label>Stocks to Process</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="process-sp500" checked>
+                                    <label for="process-sp500">S&P 500 Companies</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="process-watchlist">
+                                    <label for="process-watchlist">Watchlist Only</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="process-custom">
+                                    <label for="process-custom">Custom List</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-save">Save Schedule</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>System Settings</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label for="max-threads">Maximum Threads</label>
+                                <select id="max-threads">
+                                    <option value="1">1 (Low CPU Usage)</option>
+                                    <option value="2">2</option>
+                                    <option value="4" selected>4 (Recommended)</option>
+                                    <option value="8">8 (High Performance)</option>
+                                    <option value="0">Auto</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-storage">Data Storage Location</label>
+                                <input type="text" id="data-storage" value="ml/data/">
+                                <button type="button" class="btn-browse">Browse</button>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label>Performance Options</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="use-gpu" checked>
+                                    <label for="use-gpu">Use GPU Acceleration (if available)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cache-predictions" checked>
+                                    <label for="cache-predictions">Cache Predictions</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="auto-cleanup">
+                                    <label for="auto-cleanup">Auto Cleanup Old Data (>1 year)</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-save">Save System Settings</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3>Backup & Restore</h3>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Backup Data & Models</label>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-action">Create Backup</button>
+                                    <button type="button" class="btn-action">Schedule Backups</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Restore From Backup</label>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-action">Select Backup File</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Reset to Default</label>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-action danger">Reset All Settings</button>
+                                    <button type="button" class="btn-action danger">Clear All Data</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 AI Stock Market Prediction Tool. All rights reserved.</p>
+                <p>Version 1.0.0 | Last updated: April 22, 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Stock Details Modal -->
+    <div id="stock-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>AAPL - Apple Inc.</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stock-price-info">
+                    <div class="current-price">
+                        $192.45
+                        <span class="price-change positive">+2.35 (1.23%)</span>
+                    </div>
+                    <div class="prediction-tag buy">
+                        <i class="fas fa-arrow-up"></i> Buy
+                        <span class="confidence">85% Confidence</span>
+                    </div>
+                </div>
+                
+                <div class="prediction-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Target Price:</span>
+                        <span class="detail-value">$205.80</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Expected Return:</span>
+                        <span class="detail-value positive">+6.94%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Prediction Horizon:</span>
+                        <span class="detail-value">5 Days</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Model Used:</span>
+                        <span class="detail-value">Hybrid LSTM-Attention</span>
+                    </div>
+                </div>
+                
+                <div class="price-chart">
+                    <canvas id="modal-chart"></canvas>
+                </div>
+                
+                <div class="key-indicators">
+                    <h4>Key Technical Indicators</h4>
+                    <div class="indicators-grid">
+                        <div class="indicator-item">
+                            <span class="indicator-name">RSI (14)</span>
+                            <span class="indicator-value">58.2</span>
+                            <span class="indicator-interpretation neutral">Neutral</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">MACD</span>
+                            <span class="indicator-value">2.45</span>
+                            <span class="indicator-interpretation bullish">Bullish</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">MA Crossover</span>
+                            <span class="indicator-value">Positive</span>
+                            <span class="indicator-interpretation bullish">Bullish</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">Volume Trend</span>
+                            <span class="indicator-value">Increasing</span>
+                            <span class="indicator-interpretation bullish">Bullish</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-analyze">Full Analysis</button>
+                <button class="btn-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

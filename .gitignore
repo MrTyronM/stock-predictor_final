@@ -1,0 +1,66 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Data
+ml/data/raw/*
+ml/data/processed/*
+!ml/data/raw/.gitkeep
+!ml/data/processed/.gitkeep
+
+# Models
+ml/models/checkpoints/*
+ml/models/final/*
+!ml/models/checkpoints/.gitkeep
+!ml/models/final/.gitkeep
+
+# Logs
+ml/logs/*
+!ml/logs/.gitkeep
+
+# Scalers
+ml/preprocessing/scalers/*
+!ml/preprocessing/scalers/.gitkeep
+
+# Predictions
+ml/prediction/results/*
+ml/prediction/signals/*
+ml/prediction/visualizations/*
+!ml/prediction/results/.gitkeep
+!ml/prediction/signals/.gitkeep
+!ml/prediction/visualizations/.gitkeep
+
+# Database
+db/*.sqlite
+db/*.db

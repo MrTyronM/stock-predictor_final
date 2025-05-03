@@ -1,0 +1,66 @@
+2025-04-23 23:34:26,713 - data_acquisition - INFO - Starting data acquisition
+2025-04-23 23:34:27,073 - data_acquisition - ERROR - Error getting S&P 500 tickers: list index out of range
+2025-04-23 23:34:27,073 - data_acquisition - INFO - Using fallback list of 30 tickers
+2025-04-23 23:34:27,073 - data_acquisition - INFO - Downloading historical data for 30 S&P 500 stocks
+2025-04-23 23:34:27,621 - data_acquisition - INFO - Downloaded 11180 rows of historical data for AAPL
+2025-04-23 23:34:27,695 - data_acquisition - INFO - Saved data for AAPL to ml/data/raw/AAPL.csv
+2025-04-23 23:34:29,176 - data_acquisition - INFO - Downloaded 9854 rows of historical data for MSFT
+2025-04-23 23:34:29,242 - data_acquisition - INFO - Saved data for MSFT to ml/data/raw/MSFT.csv
+2025-04-23 23:34:30,488 - data_acquisition - INFO - Downloaded 7028 rows of historical data for AMZN
+2025-04-23 23:34:30,537 - data_acquisition - INFO - Saved data for AMZN to ml/data/raw/AMZN.csv
+2025-04-23 23:34:32,428 - data_acquisition - INFO - Downloaded 6603 rows of historical data for NVDA
+2025-04-23 23:34:32,472 - data_acquisition - INFO - Saved data for NVDA to ml/data/raw/NVDA.csv
+2025-04-23 23:34:34,144 - data_acquisition - INFO - Downloaded 5202 rows of historical data for GOOGL
+2025-04-23 23:34:34,179 - data_acquisition - INFO - Saved data for GOOGL to ml/data/raw/GOOGL.csv
+2025-04-23 23:34:35,955 - data_acquisition - INFO - Downloaded 3250 rows of historical data for META
+2025-04-23 23:34:35,982 - data_acquisition - INFO - Saved data for META to ml/data/raw/META.csv
+2025-04-23 23:34:37,996 - data_acquisition - INFO - Downloaded 5202 rows of historical data for GOOG
+2025-04-23 23:34:38,031 - data_acquisition - INFO - Saved data for GOOG to ml/data/raw/GOOG.csv
+2025-04-23 23:34:39,957 - data_acquisition - INFO - Downloaded 3727 rows of historical data for TSLA
+2025-04-23 23:34:39,987 - data_acquisition - INFO - Saved data for TSLA to ml/data/raw/TSLA.csv
+2025-04-23 23:34:41,707 - data_acquisition - INFO - Downloaded 10207 rows of historical data for UNH
+2025-04-23 23:34:41,771 - data_acquisition - INFO - Saved data for UNH to ml/data/raw/UNH.csv
+2025-04-23 23:34:44,065 - data_acquisition - INFO - Downloaded 15933 rows of historical data for XOM
+2025-04-23 23:34:44,165 - data_acquisition - INFO - Saved data for XOM to ml/data/raw/XOM.csv
+2025-04-23 23:34:46,444 - data_acquisition - INFO - Downloaded 11368 rows of historical data for JPM
+2025-04-23 23:34:46,516 - data_acquisition - INFO - Saved data for JPM to ml/data/raw/JPM.csv
+2025-04-23 23:34:48,084 - data_acquisition - INFO - Downloaded 4301 rows of historical data for V
+2025-04-23 23:34:48,116 - data_acquisition - INFO - Saved data for V to ml/data/raw/V.csv
+2025-04-23 23:34:50,362 - data_acquisition - INFO - Downloaded 15933 rows of historical data for PG
+2025-04-23 23:34:50,464 - data_acquisition - INFO - Saved data for PG to ml/data/raw/PG.csv
+2025-04-23 23:34:51,946 - data_acquisition - INFO - Downloaded 4757 rows of historical data for MA
+2025-04-23 23:34:51,980 - data_acquisition - INFO - Saved data for MA to ml/data/raw/MA.csv
+2025-04-23 23:34:54,018 - data_acquisition - INFO - Downloaded 10985 rows of historical data for HD
+2025-04-23 23:34:54,088 - data_acquisition - INFO - Saved data for HD to ml/data/raw/HD.csv
+2025-04-23 23:34:56,112 - data_acquisition - INFO - Downloaded 15933 rows of historical data for CVX
+2025-04-23 23:34:56,211 - data_acquisition - INFO - Saved data for CVX to ml/data/raw/CVX.csv
+2025-04-23 23:34:58,103 - data_acquisition - INFO - Downloaded 15933 rows of historical data for MRK
+2025-04-23 23:34:58,201 - data_acquisition - INFO - Saved data for MRK to ml/data/raw/MRK.csv
+2025-04-23 23:35:00,625 - data_acquisition - INFO - Downloaded 13334 rows of historical data for LLY
+2025-04-23 23:35:00,708 - data_acquisition - INFO - Saved data for LLY to ml/data/raw/LLY.csv
+2025-04-23 23:35:02,225 - data_acquisition - INFO - Downloaded 3095 rows of historical data for ABBV
+2025-04-23 23:35:02,246 - data_acquisition - INFO - Saved data for ABBV to ml/data/raw/ABBV.csv
+2025-04-23 23:35:04,011 - data_acquisition - INFO - Downloaded 3952 rows of historical data for AVGO
+2025-04-23 23:35:04,041 - data_acquisition - INFO - Saved data for AVGO to ml/data/raw/AVGO.csv
+2025-04-23 23:35:06,318 - data_acquisition - INFO - Downloaded 13334 rows of historical data for PEP
+2025-04-23 23:35:06,401 - data_acquisition - INFO - Saved data for PEP to ml/data/raw/PEP.csv
+2025-04-23 23:35:08,811 - data_acquisition - INFO - Downloaded 15933 rows of historical data for KO
+2025-04-23 23:35:08,912 - data_acquisition - INFO - Saved data for KO to ml/data/raw/KO.csv
+2025-04-23 23:35:11,052 - data_acquisition - INFO - Downloaded 9773 rows of historical data for COST
+2025-04-23 23:35:11,113 - data_acquisition - INFO - Saved data for COST to ml/data/raw/COST.csv
+2025-04-23 23:35:12,824 - data_acquisition - INFO - Downloaded 11368 rows of historical data for TMO
+2025-04-23 23:35:12,895 - data_acquisition - INFO - Saved data for TMO to ml/data/raw/TMO.csv
+2025-04-23 23:35:14,439 - data_acquisition - INFO - Downloaded 14798 rows of historical data for MCD
+2025-04-23 23:35:14,533 - data_acquisition - INFO - Saved data for MCD to ml/data/raw/MCD.csv
+2025-04-23 23:35:16,070 - data_acquisition - INFO - Downloaded 5975 rows of historical data for ACN
+2025-04-23 23:35:16,112 - data_acquisition - INFO - Saved data for ACN to ml/data/raw/ACN.csv
+2025-04-23 23:35:17,994 - data_acquisition - INFO - Downloaded 11368 rows of historical data for ABT
+2025-04-23 23:35:18,067 - data_acquisition - INFO - Saved data for ABT to ml/data/raw/ABT.csv
+2025-04-23 23:35:20,476 - data_acquisition - INFO - Downloaded 13274 rows of historical data for WMT
+2025-04-23 23:35:20,561 - data_acquisition - INFO - Saved data for WMT to ml/data/raw/WMT.csv
+2025-04-23 23:35:22,708 - data_acquisition - INFO - Downloaded 13154 rows of historical data for BAC
+2025-04-23 23:35:22,790 - data_acquisition - INFO - Saved data for BAC to ml/data/raw/BAC.csv
+2025-04-23 23:35:24,960 - data_acquisition - INFO - Downloaded 5242 rows of historical data for CRM
+2025-04-23 23:35:24,996 - data_acquisition - INFO - Saved data for CRM to ml/data/raw/CRM.csv
+2025-04-23 23:35:26,268 - data_acquisition - INFO - Successfully downloaded data for 30 stocks
+2025-04-23 23:35:26,271 - data_acquisition - INFO - Download complete. Downloaded data for 30 stocks.

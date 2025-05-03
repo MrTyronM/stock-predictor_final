@@ -1,0 +1,20 @@
+2025-04-27 19:59:21,724 - retrain - INFO - Starting retraining pipeline with arguments: Namespace(subset=None, model_type='simple_hybrid', epochs=30, no_clean=False, skip_download=False, skip_process=False, skip_train=False, skip_predict=False, no_historical=False)
+2025-04-27 19:59:21,724 - retrain - INFO - Cleaning directories for fresh start...
+2025-04-27 19:59:21,827 - retrain - INFO - Cleaned ml/models/checkpoints
+2025-04-27 19:59:22,006 - retrain - INFO - Cleaned ml/models/final
+2025-04-27 19:59:22,008 - retrain - INFO - Cleaned ml/models/plots
+2025-04-27 19:59:22,046 - retrain - INFO - Cleaned ml/preprocessing/scalers
+2025-04-27 19:59:22,046 - retrain - INFO - Cleaned ml/prediction/signals
+2025-04-27 19:59:22,046 - retrain - INFO - Cleaned ml/prediction/results
+2025-04-27 19:59:22,046 - retrain - INFO - Cleaned ml/prediction/visualizations
+2025-04-27 19:59:22,047 - retrain - INFO - Starting data download...
+2025-04-27 20:30:19,781 - retrain - INFO - Starting retraining pipeline with arguments: Namespace(subset=5, model_type='simple_hybrid', epochs=30, no_clean=False, skip_download=False, skip_process=False, skip_train=False, skip_predict=False, no_historical=False)
+2025-04-27 20:30:19,782 - retrain - INFO - Cleaning directories for fresh start...
+2025-04-27 20:30:19,782 - retrain - INFO - Cleaned ml/models/checkpoints
+2025-04-27 20:30:19,783 - retrain - INFO - Cleaned ml/models/final
+2025-04-27 20:30:19,788 - retrain - INFO - Cleaned ml/models/plots
+2025-04-27 20:30:19,788 - retrain - INFO - Cleaned ml/preprocessing/scalers
+2025-04-27 20:30:19,788 - retrain - INFO - Cleaned ml/prediction/signals
+2025-04-27 20:30:19,788 - retrain - INFO - Cleaned ml/prediction/results
+2025-04-27 20:30:19,788 - retrain - INFO - Cleaned ml/prediction/visualizations
+2025-04-27 20:30:19,788 - retrain - INFO - Starting data download...

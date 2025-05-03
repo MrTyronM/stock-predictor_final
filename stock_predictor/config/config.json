@@ -1,0 +1,25 @@
+{
+    "model": {
+        "model_type": "simple_hybrid",
+        "model_complexity": "simple",
+        "task": "classification",
+        "target_col": "Target_Direction_5d",
+        "confidence_threshold": 0.7
+    },
+    "training": {
+        "epochs": 30,
+        "batch_size": 32,
+        "sequence_length": 20,
+        "test_size": 0.2,
+        "use_augmentation": true,
+        "use_ensemble": false
+    },
+    "data": {
+        "start_date": "2010-01-01",
+        "days": 100
+    },
+    "system": {
+        "version": "1.0.0",
+        "use_gpu": true
+    }
+}

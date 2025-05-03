@@ -1,0 +1,30 @@
+
+name: stock_predictor
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - tensorflow
+  - jupyter
+  - pyyaml
+  - tqdm
+  - sqlalchemy
+  - pymysql
+  - plotly
+  - flask
+  - pip
+  - pip:
+    - yfinance
+    - ta-lib
+    - python-dotenv
+    - xgboost
+    - lightgbm
+    - tabulate
+    - beautifulsoup4
+    - requests

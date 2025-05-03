@@ -1,0 +1,23 @@
+:root {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f0f0;
+    --text-primary: #222222;
+    --text-secondary: #555555;
+    --accent-primary: #00a651;
+    --accent-secondary: #009548;
+    --accent-tertiary: #008541;
+    --danger: #dc3545;
+    --warning: #f19b38;
+    --success: #28a745;
+    --info: #17a2b8;
+    --border-color: #dddddd;
+  }
+  
+  .table th {
+    background-color: #f5f5f5;
+  }
+  
+  .card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
